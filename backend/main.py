@@ -14,3 +14,15 @@ def health_check():
 def get_all_notes():
     """Gibt alle Notizen zurück."""
     return notes
+
+
+Mini Notes API - Tag 2: SQLite Version
+
+import sqlite3
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+# FastAPI-App erstellen
+app = FastAPI(title="Mini Notes API", version="2.0.0")
+# Datenbank-Dateiname
+DATABASE = "notes.db"
