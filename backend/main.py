@@ -1,5 +1,10 @@
+"""
+Mini Notes API - Tag 2: SQLite Version
+"""
 
-#Mini Notes API - Tag 2: SQLite Version
+
+
+#Mini Notes API - Tag 3: SQLite Version
 
 import sqlite3
 from fastapi import FastAPI, HTTPException
@@ -10,8 +15,20 @@ app = FastAPI(title="Mini Notes API", version="2.0.0")
 # Datenbank-Dateiname
 DATABASE = "notes.db"
 
-
-
+def init_db():
+"""Datenbank initialisieren und Tabelle erstellen."""
+conn = sqlite3.connect(DATABASE)
+cursor = conn.cursor()
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS notes (
+               
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+text TEXT NOT NULL,
+created_at TEXT DEFAULT CURRENT_TIMESTAMP
+)
+""")
+conn.commit()
+conn.close()               
 
 
 # Beispiel-Daten (werden bei Neustart zurückgesetzt!)
