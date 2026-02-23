@@ -16,19 +16,17 @@ app = FastAPI(title="Mini Notes API", version="2.0.0")
 DATABASE = "notes.db"
 
 def init_db():
-"""Datenbank initialisieren und Tabelle erstellen."""
-conn = sqlite3.connect(DATABASE)
-cursor = conn.cursor()
-cursor.execute("""
+#Datenbank initialisieren und Tabelle erstellen."""
+
+    cursor.execute("""
 CREATE TABLE IF NOT EXISTS notes (
-               
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-text TEXT NOT NULL,
-created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    text TEXT NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
 )
-""")
 conn.commit()
-conn.close()               
+conn.close()    
+return {"id": new_id, "text": note.text}           
 
 
 # Beispiel-Daten (werden bei Neustart zurückgesetzt!)
